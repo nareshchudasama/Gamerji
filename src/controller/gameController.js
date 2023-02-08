@@ -20,7 +20,7 @@ exports.getAudit = async (req, res) => {
     if (!user) {
       res.status(404).json(`User Doesn't Exist`);
     } else {
-      res.status(200).json(user);
+      res.status(200).json({isError:true,data:user});
     }
   } catch (err) {
     res.status(404).json(err);

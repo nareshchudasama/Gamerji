@@ -6,8 +6,9 @@ exports.getHomePage = (req, res) => {
 
 exports.getAudits = async (req, res) => {
   try {
+    // const user = await gameModel.find({ name: "Jigar" }).count();
     const user = await gameModel.find();
-    res.status(200).json(user);
+    res.status(200).json({result:user.length, user});
   } catch (err) {
     res.status(400).json(err);
   }
@@ -32,7 +33,7 @@ exports.createAudit = async (req, res) => {
     const user = new gameModel({
       Player_name: req.body.name,
       status: req.body.active,
-      date:req.body.date
+      date: req.body.date,
     });
     await user.save();
     res.status(201).json(user);
